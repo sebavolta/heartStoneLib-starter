@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cards Deck</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <app-card-list *ngFor="let card of cards" 
+      [cardItems]="card.types" 
+      [listName]="card.name">
+    </app-card-list>
+</ion-content>

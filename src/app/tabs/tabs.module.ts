@@ -9,7 +9,10 @@ import { TabsPageRoutingModule } from './tabs.router.module';
 import { TabsPage } from './tabs.page';
 import { ContactPageModule } from '../contact/contact.module';
 import { AboutPageModule } from '../about/about.module';
-import { HomePageModule } from '../home/home.module';
+import { CardsDeckPageModule } from '../cards-deck/cards-deck.module';
+import { CardListingPageModule } from '../cards/card-listing/card-listing.module';
+import { CardDetailPageModule } from '../cards/card-detail/card-detail.module';
+
 
 @NgModule({
   imports: [
@@ -17,9 +20,11 @@ import { HomePageModule } from '../home/home.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    HomePageModule,
     AboutPageModule,
-    ContactPageModule
+    ContactPageModule,
+    CardsDeckPageModule,
+    CardListingPageModule,
+    CardDetailPageModule
   ],
   declarations: [TabsPage]
 })

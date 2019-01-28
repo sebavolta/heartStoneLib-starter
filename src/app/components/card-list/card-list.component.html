@@ -1,0 +1,16 @@
+<ion-list *ngIf="cardItems.length > 0">
+  <ion-list-header>
+    <ion-label>
+      {{listName}}:
+    </ion-label>
+  </ion-list-header>
+  <ion-item [href]="navigateTo(cardItem)" *ngFor="let cardItem of cardItems">
+    <ion-avatar slot="start">
+      <img [src]="'assets/images/'+cardItem+'.png'">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{cardItem}}</h2>
+      <p>Ugh. As if.</p>
+    </ion-label> 
+  </ion-item>
+</ion-list>

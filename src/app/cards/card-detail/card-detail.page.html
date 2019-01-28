@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title> {{card?.name}} </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +19,7 @@
       <p [innerHTML]="card.text"></p>
       <p>Type: {{card.type}}</p>
       <p>Player class: {{card.playerClass}}</p>
-      <ion-card-subtitle>Stats:</ion-card-subtitle>
+      <div class="card-stats"> Stats:</div>
       <p>Health: {{card.health ? card.health: 10}}</p>
     </ion-card-content>
   </ion-card>

@@ -5,6 +5,7 @@ import { CardItem } from "../../shared/card.model";
 import { CardService } from '../../shared/card.service';
 import { LoadingController } from '@ionic/angular';
 import { LoaderService } from '../../shared/loader.service';
+import { ToastService } from '../../shared/toast.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -17,23 +18,29 @@ export class CardDetailPage  {
 
   constructor(private actRoute: ActivatedRoute,
               private cardService: CardService,
-              private loaderSrv: LoaderService) { }
+              private loaderSrv: LoaderService,
+              private toastSrv: ToastService) { }
 
 
+
+  private getCard() {
+    this.cardService.getCardById(this.cardId).subscribe(
+      (card: CardItem[]) => {
+        this.card = card[0];
+        this.card.text = this.cardService.replaceTextLine(this.card.text);
+        this.loaderSrv.dismissLoading();
+      },(error) => {
+        this.toastSrv.presentToast('Error loading data');
+        this.loaderSrv.dismissLoading();
+      })
+  }
 
   ionViewWillEnter() {
     this.loaderSrv.presentLoader()
     this.actRoute.params.subscribe(
       (data) => {this.cardId = data.cardDetail}
     )
-
-    this.cardService.getCardById(this.cardId).subscribe(
-      (card: CardItem[]) => {
-        this.card = card[0];
-        this.card.text = this.cardService.replaceTextLine(this.card.text);
-        this.loaderSrv.dismissLoading();
-      }
-    )
+    this.getCard();
   }
 
   updateImg($event) {

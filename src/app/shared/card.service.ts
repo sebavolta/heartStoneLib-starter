@@ -33,4 +33,8 @@ export class CardService {
     return this.http.get<CardItem[]>(`${this.URL}/cards/${cardId}`,{headers: this.headers})
   }
 
+  public replaceTextLine(text:string) {
+    return text ? text.replace(new RegExp("\\\\n","g"), ' ') : 'No description';
+  }
+
 }

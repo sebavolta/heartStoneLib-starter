@@ -24,7 +24,10 @@ export class CardListingPage {
     })
 
     this.cardService.getCardsByDeck(this.cardDeckGroup,this.cardItem).subscribe(
-      (cards: CardItem[]) => this.cards = cards
+      (cards: CardItem[]) => this.cards = cards.map((card:CardItem) => {
+         card.text = this.cardService.replaceTextLine(card.text);
+         return card;
+      })
     )
 
   }

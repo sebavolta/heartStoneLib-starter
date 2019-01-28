@@ -22,7 +22,10 @@ export class CardDetailPage  {
     )
 
     this.cardService.getCardById(this.cardId).subscribe(
-      (card: CardItem[]) => this.card = card[0]
+      (card: CardItem[]) => {
+        this.card = card[0];
+        this.card.text = this.cardService.replaceTextLine(this.card.text);
+      }
     )
   }
 

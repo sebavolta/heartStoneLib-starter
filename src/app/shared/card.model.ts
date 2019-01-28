@@ -16,5 +16,6 @@ export interface CardItem {
     name: string,
     playerClass: string,
     rarity: string,
-    type: string
+    type: string,
+    text: string
 }

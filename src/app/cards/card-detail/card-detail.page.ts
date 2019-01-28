@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CardItem } from "../../shared/card.model";
 import { CardService } from '../../shared/card.service';
 import { LoadingController } from '@ionic/angular';
+import { LoaderService } from '../../shared/loader.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -13,23 +14,15 @@ import { LoadingController } from '@ionic/angular';
 export class CardDetailPage  {
   private cardId:string = '';
   private card: CardItem;
-  private loader: any;
 
   constructor(private actRoute: ActivatedRoute,
               private cardService: CardService,
-              private loadingCtrl: LoadingController) { }
+              private loaderSrv: LoaderService) { }
 
-  async presentLoading() {
-    const loader = await this.loadingCtrl.create({
-      content: 'Loading...',
-      translucent: true
-    });
-    loader.present()
-    return loader;
-  }
 
-  async ionViewWillEnter() {
-    this.loader = await this.presentLoading();
+
+  ionViewWillEnter() {
+    this.loaderSrv.presentLoader()
     this.actRoute.params.subscribe(
       (data) => {this.cardId = data.cardDetail}
     )
@@ -38,7 +31,7 @@ export class CardDetailPage  {
       (card: CardItem[]) => {
         this.card = card[0];
         this.card.text = this.cardService.replaceTextLine(this.card.text);
-        this.loader.dismiss();
+        this.loaderSrv.dismissLoading();
       }
     )
   }

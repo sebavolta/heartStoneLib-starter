@@ -6,6 +6,7 @@ import { CardService } from '../../shared/card.service';
 import { LoadingController } from '@ionic/angular';
 import { LoaderService } from '../../shared/loader.service';
 import { ToastService } from '../../shared/toast.service';
+import { AlertService } from '../../shared/alert.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -19,7 +20,8 @@ export class CardDetailPage  {
   constructor(private actRoute: ActivatedRoute,
               private cardService: CardService,
               private loaderSrv: LoaderService,
-              private toastSrv: ToastService) { }
+              private toastSrv: ToastService,
+              private alertSrv: AlertService ) { }
 
 
 
@@ -28,9 +30,10 @@ export class CardDetailPage  {
       (card: CardItem[]) => {
         this.card = card[0];
         this.card.text = this.cardService.replaceTextLine(this.card.text);
-        this.loaderSrv.dismissLoading();
+        this.loaderSrv.dismissLoading();       
       },(error) => {
         this.toastSrv.presentToast('Error loading data');
+        this.alertSrv.presentAlert('Error loading data');
         this.loaderSrv.dismissLoading();
       })
   }

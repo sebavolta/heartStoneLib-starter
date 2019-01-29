@@ -17,6 +17,7 @@ export class CardListingPage {
   private cards: CardItem[] = [];
   private copyOfCards: CardItem[] = [];
   private loader: any;
+  private isLoadingSearch: boolean = false;
 
   constructor(private actRoute: ActivatedRoute, 
               private cardService: CardService,
@@ -59,6 +60,10 @@ export class CardListingPage {
 
   listSearchCards(cards: CardItem[]) {
     this.cards = cards;
+    this.isLoadingSearch = false;
   }
 
+  searchStarted() {
+    this.isLoadingSearch = true;
+  }
 }

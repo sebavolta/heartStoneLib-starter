@@ -13,11 +13,13 @@ export class SearchComponent implements OnInit {
   @Input() filterProperty: string = '';
   
   @Output() searchCompleted = new EventEmitter();
+  @Output() searchStarted = new EventEmitter();
 
   private searchSubject = new BehaviorSubject('');
 
 
   handleSearch($event) {
+    this.searchStarted.emit();
     this.searchSubject.next($event.target.value);
  }
 

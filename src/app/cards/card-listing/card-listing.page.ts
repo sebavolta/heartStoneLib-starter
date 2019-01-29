@@ -15,6 +15,7 @@ export class CardListingPage {
   private cardDeckGroup: string;
   private cardItem:string;
   private cards: CardItem[] = [];
+  private copyOfCards: CardItem[] = [];
   private loader: any;
 
   constructor(private actRoute: ActivatedRoute, 
@@ -32,6 +33,7 @@ export class CardListingPage {
          card.text = this.cardService.replaceTextLine(card.text);
          return card;
       })
+      this.copyOfCards = Array.from(this.cards);
       this.loaderSrv.dismissLoading();
     },(error) => {
       this.toastSrv.presentToast('Error loading data');
@@ -53,6 +55,10 @@ export class CardListingPage {
 
   doRefresh($event) {
     $event.target.complete()
+  }
+
+  listSearchCards(cards: CardItem[]) {
+    this.cards = cards;
   }
 
 }

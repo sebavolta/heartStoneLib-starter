@@ -1,3 +1,10 @@
 ion-spinner {
     width: 100%;
 }
+.flame-icon {
+    float: right;
+    font-size: 22px;
+    &.favorite {
+        color: orange;
+    }
+}

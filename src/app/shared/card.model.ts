@@ -17,5 +17,6 @@ export interface CardItem {
     playerClass: string,
     rarity: string,
     type: string,
-    text: string
+    text: string,
+    favorite: boolean
 }

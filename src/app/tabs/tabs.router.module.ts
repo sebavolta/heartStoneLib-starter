@@ -8,6 +8,7 @@ import { ContactPage } from '../contact/contact.page';
 import { CardsDeckPage } from '../cards-deck/cards-deck.page';
 import { CardListingPage } from '../cards/card-listing/card-listing.page';
 import { CardDetailPage } from '../cards/card-detail/card-detail.page';
+import { FavoritesPage } from '../favorites/favorites.page';
 
 const routes: Routes = [
   {
@@ -20,9 +21,9 @@ const routes: Routes = [
         component: AboutPage
       },
       {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
+        path: 'favorites',
+        outlet: 'favorites',
+        component: FavoritesPage
       },
       {
         path: 'card', // path inside stack

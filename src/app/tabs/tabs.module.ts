@@ -12,6 +12,7 @@ import { AboutPageModule } from '../about/about.module';
 import { CardsDeckPageModule } from '../cards-deck/cards-deck.module';
 import { CardListingPageModule } from '../cards/card-listing/card-listing.module';
 import { CardDetailPageModule } from '../cards/card-detail/card-detail.module';
+import { FavoritesPageModule } from '../favorites/favorites.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CardDetailPageModule } from '../cards/card-detail/card-detail.module';
     ContactPageModule,
     CardsDeckPageModule,
     CardListingPageModule,
-    CardDetailPageModule
+    CardDetailPageModule,
+    FavoritesPageModule
   ],
   declarations: [TabsPage]
 })

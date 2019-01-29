@@ -15,6 +15,12 @@ export class StorageService {
     })
   }
 
+  getStorageItems() {
+    return this.storage.get('favoriteCards').then((favoriteCards) => {
+      return this.favoriteCards = favoriteCards || {};
+    })
+  }
+
   setStorage(card: CardItem) {
     if(card.favorite) {
       card.favorite = false;

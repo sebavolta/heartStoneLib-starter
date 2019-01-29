@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-list *ngIf="favCardsArray.length > 0">
+    <ion-card *ngFor="let card of favCardsArray">
+      <ion-card-header text-wrap>
+        <ion-card-subtitle>          
+          {{card.cardSet}}
+        </ion-card-subtitle>
+        <ion-card-title>{{card.name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p [innerHTML]="card.text"></p>
+        <ion-button 
+          size="medium" 
+          expand="full"
+          [href]="'/tabs/(card:card/'+ card.cardId +')'"
+          >See details:</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

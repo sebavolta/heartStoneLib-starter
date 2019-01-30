@@ -38,8 +38,8 @@ export class CardDetailPage  {
       })
   }
 
-  ionViewWillEnter() {
-    this.loaderSrv.presentLoader()
+  async ionViewWillEnter() {
+    await this.loaderSrv.presentLoader()
     this.actRoute.params.subscribe(
       (data) => {this.cardId = data.cardDetail}
     )

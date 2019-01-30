@@ -20,8 +20,9 @@ export class CardListingPage {
   private loader: any;
   private isLoadingSearch: boolean = false;
   private favoriteCards: any = {};
+  private limit: number = 5;
   //private storeSubscription: Subscription;
-
+  
   constructor(private actRoute: ActivatedRoute, 
               private cardService: CardService,
               private loaderSrv: LoaderService,
@@ -30,8 +31,8 @@ export class CardListingPage {
   }
 
    
-   private getCards() {
-      this.loaderSrv.presentLoader();
+   async getCards() {
+      await this.loaderSrv.presentLoader();
       this.cardService.getCardsByDeck(this.cardDeckGroup,this.cardItem).subscribe(
       (cards: CardItem[]) => {
         this.cards = cards.map((card:CardItem) => {
@@ -75,5 +76,12 @@ export class CardListingPage {
 
   isCardFavorite(cardId:string):boolean {
     return this.storageSrv.favoriteCards[cardId];
+  }
+
+  loadData(infinitScroll) {
+    this.limit +=this.limit;
+    infinitScroll.target.complete();
+    console.log('load data');
+    
   }
 }
